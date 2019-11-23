@@ -1,0 +1,33 @@
+
+.btn-buy-size {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 0;
+
+    font-size: 13px;
+}
+
+.btn-info-size {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 20px;
+    font-size: 13px;
+}
+
+.btn-load-more-size {
+    height: 40px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.books {
+    margin-top: 5px;
+}

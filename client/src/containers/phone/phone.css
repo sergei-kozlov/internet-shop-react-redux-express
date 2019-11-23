@@ -1,0 +1,40 @@
+
+.parent {
+    float: left;
+    margin-top: 25px;
+    padding-left: 10px;
+    font-size: 1.2em;
+    border-bottom: 1px dashed #d3d3d3;
+    clear: both;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+
+}
+
+.thumbnail img {
+    width: 100%;
+    display: inline-block !important;
+}
+
+
+.view-container {
+    margin-top: 70px;
+}
+
+.btn-height {
+    height: 40px;
+    text-align: center;
+    text-justify: auto;
+
+}
+
+.logo {
+    color: tomato;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+
+
+

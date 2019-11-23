@@ -1,0 +1,33 @@
+{
+  "name": "internet-shop-react-redux-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "@meanie/mongoose-to-json": "^2.4.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.12",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4",
+    "supertest": "^4.0.2"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergei-kozlov/internet-shop-react-redux.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergei-kozlov/internet-shop-react-redux/issues"
+  },
+  "homepage": "https://github.com/sergei-kozlov/internet-shop-react-redux#readme"
+}
