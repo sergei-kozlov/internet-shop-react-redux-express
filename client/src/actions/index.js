@@ -116,10 +116,10 @@ export const addPhoneToBasket = id => {
     })
 };
 
-export const removePhoneFromBasket = name => {
+export const removePhoneFromBasket = id => {
     return({
         type: REMOVE_PHONE_FROM_BASKET,
-        payload: name
+        payload: id
     })
 };
 

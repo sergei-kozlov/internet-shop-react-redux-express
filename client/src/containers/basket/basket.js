@@ -76,6 +76,12 @@ const Basket = ({
                                     </Link>
 
                                     <button
+                                        onClick={() => removePhoneFromBasket(phone.id)}
+                                        className="btn btn-outline-danger btn-table-size">
+                                        <i className="fa fa-minus-circle"/>
+                                    </button>
+
+                                    <button
                                         onClick={() => removeAllPhonesFromBasket(phone.id)}
                                         className="btn btn-outline-danger btn-table-size">
                                         <i className="fa fa-trash-o"/>

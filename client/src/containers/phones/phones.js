@@ -69,20 +69,15 @@ class Phones extends Component {
 
     render() {
 
-        const {loading, error} = this.props;
+        const {loading} = this.props;
 
-        if (loading) {
-            return <Spinner/>;
-        }
-
-        if (error) {
-            return <ErrorIndicator/>;
-        }
+        const spinner = loading ? <Spinner/> : null;
 
         const {phones, loadMorePhones} = this.props;
         return (
             <Layout>
                 <div className="row books">
+                    {spinner}
                     {phones.map((phone, index) => this.renderPhone(phone, index))}
                 </div>
 
