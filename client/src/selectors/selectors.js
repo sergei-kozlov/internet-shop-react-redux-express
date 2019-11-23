@@ -33,7 +33,7 @@ export const getTotalBasketPrice = state => {
 
 export const getCategories = state => R.values(state.categories);
 
-export const getActiveCategoryId = ownProps => R.path(['match', 'params', 'idx'], ownProps);
+export const getActiveCategoryId = ownProps => R.path(['match', 'params', 'id'], ownProps);
 
 export const getBasketPhonesWithCount = state => {
   const phoneCount = id => R.compose(

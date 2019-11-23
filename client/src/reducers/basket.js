@@ -20,7 +20,7 @@ export default (state = initialState, {type, payload}) => {
             return R.append(payload, state);
 
         case REMOVE_PHONE_FROM_BASKET:
-            return R.dropLast(R.of(payload), state);
+            return R.dropLast(payload, state);
 
         case REMOVE_ALL_PHONES_FROM_BASKET:
             return R.without(R.of(payload), state);
