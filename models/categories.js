@@ -1,11 +1,9 @@
 const {Schema, model} = require('mongoose');
+const toJson = require('@meanie/mongoose-to-json');
+const mongoose = require('mongoose');
+mongoose.plugin(toJson);
 
 const Categories = new Schema({
-
-    idx: {
-        type: Number,
-        required: true
-    },
 
     name: {
         type: String,
@@ -13,5 +11,7 @@ const Categories = new Schema({
     }
 
 });
+
+Categories.plugin(toJson);
 
 module.exports = model('Categories', Categories);

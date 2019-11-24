@@ -33,5 +33,4 @@ export const fetchCategories = async () => {
         'http://localhost:5000/api/categories'
     );
     return body.categories;
-
 };

@@ -8,7 +8,7 @@ mongoose.plugin(toJson);
 const Phones = new Schema({
 
     categoryId: {
-        type: Number,
+        type: String,
         required: true
     },
 

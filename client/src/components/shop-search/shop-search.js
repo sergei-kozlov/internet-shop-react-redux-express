@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-
 import {searchPhone} from '../../actions';
 
 import './shop-search.css';
 
-
 class Search extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             value: ''
         };
@@ -45,7 +42,6 @@ class Search extends Component {
                                     type="text"
                                     className="form-control"
                                     placeholder="Search..."/>
-
                                 <div className="input-group-append">
                                     <button className="btn btn-secondary">
                                         <i className="fa fa-search"/>

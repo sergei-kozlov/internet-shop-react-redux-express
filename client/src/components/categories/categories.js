@@ -8,21 +8,32 @@ import * as R from 'ramda';
 
 import {getCategories, getActiveCategoryId} from '../../selectors/selectors';
 
+
 const Categories = ({categories, activeCategoryId}) => {
-  console.log('activeCategoryId', activeCategoryId);
+
+  console.log('activeCategoryId', getCategories);
+
   const renderCategory = (category, index) => {
-    const getActiveState = R.propEq('idx', activeCategoryId);
+
+    const getActiveState = R.propEq('id', activeCategoryId);
+
+    console.log(category.name);
+
+
+
     const linkClass = classNames({
       'list-group-item': true,
       'active': getActiveState(category)
     });
     return (
+
       <Link
-        to={`/categories/${category.idx}`}
+        to={`/categories/${category.id}`}
         className={linkClass}
         key={index}
       >
         {category.name}
+
       </Link>
     )
   };
