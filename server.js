@@ -49,9 +49,9 @@ app.use('/api/order', orderRouter);
 
 
 //test handlebars
-app.use('/confirm', (req, res) => {
-    res.render('confirm_order');
-});
+// app.use('/confirm', (req, res) => {
+//     res.render('confirm_order');
+// });
 
 
 

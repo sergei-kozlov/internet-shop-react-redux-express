@@ -8,7 +8,7 @@ import {
     basketCheckout,
     cleanBasket,
     addPhoneToBasket,
-    removeAllPhonesFromBasket
+    removeAllPhonesFromBasket,
 } from '../../actions';
 
 import {

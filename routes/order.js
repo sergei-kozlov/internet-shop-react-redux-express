@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
             pet: req.body.pet
         });
         await order.save();
-        res.status(201).redirect('/confirm_order')
+        res.status(201);
 
 
     } catch (e) {
