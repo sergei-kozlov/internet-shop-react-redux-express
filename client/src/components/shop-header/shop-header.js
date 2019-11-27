@@ -19,7 +19,7 @@ const ShopHeaderCart = ({totalBasketCount, totalPrice}) => {
 
                     <div className="pull-left">
                         <div className="header-logo">
-                            <Link to='/' className="logo" exact>
+                            <Link to='/' className="logo" exact="true" >
                                 <img src={Logo} alt="Welcome to KWIK-E-MART"/>
                             </Link>
                         </div>
@@ -30,13 +30,13 @@ const ShopHeaderCart = ({totalBasketCount, totalPrice}) => {
                             <li><Link to='/store'>Store</Link></li>
                             <li><Link to='./newsletter'>Newsletter</Link></li>
                             <li><Link to='/faq'>FAQ</Link></li>
-                            <li>
-                                <Link to='/login' className="text-uppercase">Login</Link>
-                                /
-                                <Link to='/join' className="text-uppercase">Join</Link>
+                            {/*<li>*/}
+                            {/*    <Link to='/login' className="text-uppercase">Login</Link>*/}
+                            {/*    /*/}
+                            {/*    <Link to='/join' className="text-uppercase">Join</Link>*/}
 
 
-                            </li>
+                            {/*</li>*/}
 
                             <li>
                                 <Link to='/cart'>

@@ -21,7 +21,8 @@ import {
     fetchPhones as fetchPhonesApi,
     loadMorePhones as loadMorePhonesApi,
     fetchPhoneById as fetchPhoneByIdApi,
-    fetchCategories as fetchCategoriesApi
+    fetchCategories as fetchCategoriesApi,
+    saveOrderToDB as saveOrderToDBApi
 } from '../api';
 import {getRenderedPhonesLength} from '../selectors/selectors';
 
@@ -129,12 +130,6 @@ export const cleanBasket = () => async dispatch => {
     })
 };
 
-export const basketCheckout = phones => () => {
-    alert(JSON.stringify(phones))
-
-};
-
-
 //New Actions of basket
 
 export const removeAllPhonesFromBasket = id => {
@@ -147,3 +142,12 @@ export const removeAllPhonesFromBasket = id => {
 //End of New Actions
 
 // End of Cart Actions
+
+export const basketCheckout = phones => () => {
+    saveOrderToDBApi();
+
+
+
+    alert(JSON.stringify(phones))
+
+};

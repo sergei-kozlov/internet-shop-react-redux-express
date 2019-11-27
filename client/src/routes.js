@@ -21,8 +21,8 @@ export default (
         <Route path='/phones/:id' component={Phone}/>
 
         <Route path='/faq' component={FaqPage}/>
-        <Route path='/login' component={LoginPage}/>
-        <Route path='/join' component={JoinPage}/>
+        {/*<Route path='/login' component={LoginPage}/>*/}
+        {/*<Route path='/join' component={JoinPage}/>*/}
 
         <Route path='/newsletter' component={NewsLatterPage}/>
         <Route path='/store' component={StorePage}/>

@@ -10,16 +10,8 @@ import {getCategories, getActiveCategoryId} from '../../selectors/selectors';
 
 
 const Categories = ({categories, activeCategoryId}) => {
-
-  console.log('activeCategoryId', getCategories);
-
   const renderCategory = (category, index) => {
-
     const getActiveState = R.propEq('id', activeCategoryId);
-
-    console.log(category.name);
-
-
 
     const linkClass = classNames({
       'list-group-item': true,

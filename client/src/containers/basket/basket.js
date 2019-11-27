@@ -113,7 +113,7 @@ const Basket = ({
                 R.not(isBasketEmpty) &&
                 <div>
                     <button
-                        onClick={cleanBasket}
+                        onClick= {() => cleanBasket}
                         className='btn btn-danger btn-size btn-block'
                     >
                         <span className='glyphicon glyphicon-trash'/>

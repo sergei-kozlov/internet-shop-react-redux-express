@@ -34,3 +34,18 @@ export const fetchCategories = async () => {
     );
     return body.categories;
 };
+
+
+export const saveOrderToDB = async () => {
+
+   await request.post('http://localhost:5000/api/order')
+        .set('Content-Type', 'application/json')
+        .send({
+            name: "tj",
+            pet:"tobi"
+
+
+        });
+
+
+};

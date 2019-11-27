@@ -14,7 +14,7 @@ import {getPhones} from '../../selectors/selectors';
 import Layout from '../layout';
 
 import Spinner from "../../components/spinner";
-import ErrorIndicator from "../../components/error-indicator";
+
 
 import './phones.css';
 

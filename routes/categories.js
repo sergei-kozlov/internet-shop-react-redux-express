@@ -6,7 +6,6 @@ const router = Router();
 router.post('/', async (req, res) => {
     try {
         const categories = new Categories({
-            idx: req.body.idx,
             name: req.body.name
         });
         await categories.save();
@@ -51,7 +50,7 @@ router.get('/:id', async (req, res) => {
 //Change categories data
 router.put('/:id', async (req, res) => {
     try {
-        const categories = await Categories.findById(req.params.id);
+        const categories = await Categories.findOneAndUpdate(req.params.id);
         categories.done = req.body.done;
         await categories.save();
         res.status(201).json(categories);
