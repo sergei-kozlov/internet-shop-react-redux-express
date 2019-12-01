@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import * as R from 'ramda';
 
-
 import {
     fetchPhones,
     loadMorePhones,
@@ -14,7 +13,6 @@ import {getPhones} from '../../selectors/selectors';
 import Layout from '../layout';
 
 import Spinner from "../../components/spinner";
-
 
 import './phones.css';
 
@@ -27,11 +25,11 @@ class Phones extends Component {
 
     renderPhone(phone, index) {
         const {addPhoneToBasket} = this.props;
-        const shortDescription = `${R.take(30, phone.description)}...`;
+        const shortDescription = `${R.take(25, phone.description)}...`;
 
         return (
 
-            <div className="col-sm-4" key={index}>
+            <div className="col-md-4" key={index}>
 
                 <div className='thumbnail'>
                     <img
@@ -53,7 +51,6 @@ class Phones extends Component {
                                 Buy Now!
                             </button>
 
-
                             <Link to={`/phones/${phone.id}`}>
                                 <button className='btn btn-secondary btn-info-size pull-right'>
                                     More info
@@ -63,7 +60,6 @@ class Phones extends Component {
                     </div>
                 </div>
             </div>
-
         )
     }
 
@@ -76,9 +72,11 @@ class Phones extends Component {
         const {phones, loadMorePhones} = this.props;
         return (
             <Layout>
-                <div className="row books">
-                    {spinner}
+                <div className="row phone">                    {spinner}
+
                     {phones.map((phone, index) => this.renderPhone(phone, index))}
+
+
                 </div>
 
                 <div>

@@ -15,7 +15,9 @@ import {
     FETCH_CATEGORIES_SUCCESS,
     REMOVE_PHONE_FROM_BASKET,
     CLEAN_BASKET,
-    REMOVE_ALL_PHONES_FROM_BASKET
+    REMOVE_ALL_PHONES_FROM_BASKET,
+    SAVE_ORDER_TO_DB_SUCCESS,
+    SAVE_ORDER_TO_DB_FAILURE
 } from '../actionTypes';
 import {
     fetchPhones as fetchPhonesApi,
@@ -25,6 +27,7 @@ import {
     saveOrderToDB as saveOrderToDBApi
 } from '../api';
 import {getRenderedPhonesLength} from '../selectors/selectors';
+
 
 export const fetchPhones = () => async dispatch => {
     dispatch({type: FETCH_PHONES_START});
@@ -143,11 +146,41 @@ export const removeAllPhonesFromBasket = id => {
 
 // End of Cart Actions
 
-export const basketCheckout = phones => () => {
-    saveOrderToDBApi();
+// export const basketCheckout  = () => async (personalData, dispatch) => {
+//     try {
+//         await saveOrderToDBApi(personalData);
+//         dispatch({
+//             type: SAVE_ORDER_TO_DB_SUCCESS,
+//             error: false
+//
+//         })
+//
+//     } catch (err) {
+//         dispatch({
+//             type: SAVE_ORDER_TO_DB_FAILURE,
+//             error: true
+//         })
+// }};
+
+export const basketCheckout =  order => async (dispatch) => {
+    try {
+        await saveOrderToDBApi(order);
+        dispatch({
+            type: SAVE_ORDER_TO_DB_SUCCESS,
+            error: false
+
+        })
+
+    } catch (err) {
+        dispatch({
+            type: SAVE_ORDER_TO_DB_FAILURE,
+            error: true
+        })
+}};
 
 
 
-    alert(JSON.stringify(phones))
 
-};
+
+    // alert(JSON.stringify(personalData))
+

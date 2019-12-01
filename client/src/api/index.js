@@ -1,9 +1,14 @@
 import * as R from 'ramda';
 import request from 'superagent';
 
+
+//Change URL before deploy to Heroku
+const URL = 'http://localhost:5000';
+
+
 export const fetchPhones = async () => {
     const {body} = await request.get(
-        'http://localhost:5000/api/phones'
+        URL +'/api/phones'
     );
     return body.phones;
 
@@ -12,7 +17,7 @@ export const fetchPhones = async () => {
 
 export const loadMorePhones = async ({offset}) => {
     const { body } = await request.get(
-        'http://localhost:5000/api/phones'
+        URL +'/api/phones'
     );
     return body.phones;
 
@@ -21,7 +26,7 @@ export const loadMorePhones = async ({offset}) => {
 
 export const fetchPhoneById = async (id) => {
     const {body} = await request.get(
-        'http://localhost:5000/api/phones'
+        URL +'/api/phones'
     );
     return R.find(R.propEq('id', id), body.phones);
 
@@ -30,22 +35,18 @@ export const fetchPhoneById = async (id) => {
 
 export const fetchCategories = async () => {
     const { body } = await request.get(
-        'http://localhost:5000/api/categories'
+        URL + '/api/categories'
     );
     return body.categories;
 };
 
 
-export const saveOrderToDB = async () => {
+export const saveOrderToDB = async (personalData) => {
 
-   await request.post('http://localhost:5000/api/order')
+   await request.post(
+       URL + '/api/order'
+   )
         .set('Content-Type', 'application/json')
-        .send({
-            name: "tj",
-            pet:"tobi"
-
-
-        });
-
+        .send(personalData);
 
 };

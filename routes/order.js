@@ -7,20 +7,30 @@ router.post('/', async (req, res) => {
     try {
         const order = new Order({
             name: req.body.name,
-            pet: req.body.pet
+            surname: req.body.surname,
+            phone: req.body.phone,
+            email: req.body.email,
+            app: req.body.app
+
+
         });
         await order.save();
-        res.status(201);
+        res.status(201).json(order);
 
 
     } catch (e) {
         console.log(e);
         res.status(500).json({
             message: 'Server error'
-
         })
     }
 });
+
+router.get('/', async (req, res) => {
+
+
+});
+
 
 module.exports = router;
 

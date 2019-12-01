@@ -27,6 +27,11 @@ export const CLEAN_BASKET = 'CLEAN_BASKET';
 export const REMOVE_ALL_PHONES_FROM_BASKET  = 'REMOVE_ALL_PHONES_FROM_BASKET';
 
 
+//Save order to DB
+export const SAVE_ORDER_TO_DB_SUCCESS = 'SAVE_ORDER_TO_DB';
+export const SAVE_ORDER_TO_DB_FAILURE = 'SAVE_ORDER_TO_DB';
+
+
 
 
 

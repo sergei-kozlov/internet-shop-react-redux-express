@@ -3,16 +3,28 @@ const toJson = require('@meanie/mongoose-to-json');
 const mongoose = require('mongoose');
 mongoose.plugin(toJson);
 
-const Order = new Schema ({
+const Order = new Schema({
     name: {
         type: String,
         required: true
     },
-    pet:
-        {
-            type: String,
-            required: true
-        },
+    surname: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+
+    phone: {
+        type: Number,
+        required: true
+    },
+    app: {
+        type: Object,
+        required: true
+    }
 
 
 });
