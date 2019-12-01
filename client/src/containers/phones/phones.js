@@ -72,8 +72,8 @@ class Phones extends Component {
         const {phones, loadMorePhones} = this.props;
         return (
             <Layout>
-                <div className="row phone">                    {spinner}
-
+                <div className="row phone">
+                    {spinner}
                     {phones.map((phone, index) => this.renderPhone(phone, index))}
 
 
