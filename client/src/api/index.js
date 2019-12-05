@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import request from 'superagent';
 
 
-//Change URL before deploy to Heroku
+//Change URL before deploing to Heroku
 const URL = 'http://localhost:5000';
 
 
@@ -11,7 +11,6 @@ export const fetchPhones = async () => {
         URL +'/api/phones'
     );
     return body.phones;
-
 };
 
 
@@ -20,7 +19,6 @@ export const loadMorePhones = async ({offset}) => {
         URL +'/api/phones'
     );
     return body.phones;
-
 };
 
 
@@ -29,7 +27,6 @@ export const fetchPhoneById = async (id) => {
         URL +'/api/phones'
     );
     return R.find(R.propEq('id', id), body.phones);
-
 };
 
 
@@ -42,11 +39,9 @@ export const fetchCategories = async () => {
 
 
 export const saveOrderToDB = async (personalData) => {
-
    await request.post(
        URL + '/api/order'
    )
         .set('Content-Type', 'application/json')
         .send(personalData);
-
 };

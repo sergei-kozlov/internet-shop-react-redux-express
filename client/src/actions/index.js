@@ -146,21 +146,6 @@ export const removeAllPhonesFromBasket = id => {
 
 // End of Cart Actions
 
-// export const basketCheckout  = () => async (personalData, dispatch) => {
-//     try {
-//         await saveOrderToDBApi(personalData);
-//         dispatch({
-//             type: SAVE_ORDER_TO_DB_SUCCESS,
-//             error: false
-//
-//         })
-//
-//     } catch (err) {
-//         dispatch({
-//             type: SAVE_ORDER_TO_DB_FAILURE,
-//             error: true
-//         })
-// }};
 
 export const basketCheckout =  order => async (dispatch) => {
     try {
@@ -177,10 +162,3 @@ export const basketCheckout =  order => async (dispatch) => {
             error: true
         })
 }};
-
-
-
-
-
-    // alert(JSON.stringify(personalData))
-

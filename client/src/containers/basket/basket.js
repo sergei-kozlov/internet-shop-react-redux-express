@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as R from 'ramda';
+import {Formik, Field, Form} from 'formik';
 
 import {Link} from 'react-router-dom';
-import {Form, Field} from 'react-final-form';
-
+import BasketFormSchema from "./basket-form-schema";
 
 import {
     removePhoneFromBasket,
@@ -18,23 +18,7 @@ import {
     getBasketPhonesWithCount,
     getTotalBasketPrice
 } from '../../selectors/selectors';
-
 import './basket.css'
-
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-const onSubmit = async values => {
-    await sleep(300);
-    window.alert(JSON.stringify(values, 0, 2))
-};
-
-const required = value => (value ? undefined : 'Required');
-const mustBeNumber = value => (isNaN(value) ? 'Must be a number' : undefined);
-const minValue = min => value =>
-    isNaN(value) || value >= min ? undefined : `Should be greater than ${min}`;
-const composeValidators = (...validators) => value =>
-    validators.reduce((error, validator) => error || validator(value), undefined);
-
 
 const Basket = ({
                     phones,
@@ -105,7 +89,6 @@ const Basket = ({
         )
     };
 
-
     const app = phones.map((phoneOrder, index) => (
 
         R.assoc('count', phoneOrder.count, R.pick(['name', 'price'], phoneOrder))
@@ -113,87 +96,116 @@ const Basket = ({
 
     const phonesOrdered = {app};
 
-
     const renderSidebar = () => (
-
-
         <div>
             {R.not(isBasketEmpty) &&
             <div>
-                <Form
-                    onSubmit={onSubmit}
-                    render={({handleSubmit, form, submitting, pristine, values}) => (
 
-                        <form className="ui form">
+                <Formik
+                    initialValues={{
+                        firstname: "",
+                        secondname: "",
+                        email: "",
+                        phone: ""
+                    }}
+
+                    validationSchema={BasketFormSchema}
+                    onSubmit={(values, {setSubmitting}) => {
+                        setTimeout(() => {
+                            alert(JSON.stringify(values, null, 2));
+                        }, 500);
+                        setSubmitting(false);
+                    }}
+                    render={({
+                                 errors,
+                                 touched,
+                                 isSubmitting,
+                                 handleReset,
+                                 dirty
+                             }) => (
+
+                        <Form className="ui form">
                             <div className="unstackable two fields">
+                                <div className="field">
+                                    <label>First name</label>
+                                    <div className="ui input">
 
-                                <Field name="firstName" validate={required}>
-                                    {({input, meta}) => (
-                                        <div className="field">
-                                            <label>First name</label>
-                                            <div className="ui input">
-                                                <input id="name" {...input} type="text" placeholder="First name"/>
-                                                {meta.error && meta.touched && <span>{meta.error}</span>}
-                                            </div>
-                                        </div>
-                                    )}
-                                </Field>
+                                        <Field
+                                            id="firstname"
+                                            name="firstname"
+                                            type="text"
+                                            placeholder="First name"
+                                        />
+                                        {errors.firstname && touched.firstname &&
+                                        (<div className="field-error">{errors.firstname}</div>
+                                        )}
 
-                                <Field name="lastName" validate={required}>
-                                    {({input, meta}) => (
-                                        <div className="field">
-                                            <label>First name</label>
-                                            <div className="ui input">
-                                                <input id="surname" {...input} type="text" placeholder="Last name"/>
-                                                {meta.error && meta.touched && <span>{meta.error}</span>}
-                                            </div>
-                                        </div>
-                                    )}
-                                </Field>
+                                    </div>
+                                </div>
+
+
+                                <div className="field">
+                                    <label>Second name</label>
+                                    <div className="ui input">
+                                        <Field
+                                            id="secondname"
+                                            name="secondname"
+                                            type="text"
+                                            placeholder="Last name"
+                                        />
+                                        {errors.secondname && touched.secondname &&
+                                        (<div className="field-error">{errors.secondname}</div>
+                                        )}
+
+                                    </div>
+                                </div>
                             </div>
 
 
                             <div className="two fields">
-                                <Field name="Email" validate={required}>
-                                    {({input, meta}) => (
-                                        <div className="field">
-                                            <label>Email</label>
-                                            <div className="ui input">
-                                                <input id="email"{...input} type="text" placeholder="Email"/>
-                                                {meta.error && meta.touched && <span>{meta.error}</span>}
-                                            </div>
-                                        </div>
-                                    )}
-                                </Field>
 
+                                <div className="field">
+                                    <label>Email</label>
+                                    <div className="ui input">
+                                        <Field
+                                            id="email"
+                                            name="email"
+                                            type="text"
+                                            placeholder="Email"
+                                        />
+                                        {errors.email && touched.email &&
+                                        (<div className="field-error">{errors.email}</div>
+                                        )}
 
-                                {/*<div className="field">*/}
-                                {/*    <label>Address</label>*/}
-                                {/*    <div className="ui input"><input type="text" placeholder="Address"/></div>*/}
-                                {/*</div>*/}
+                                    </div>
+                                </div>
 
                                 <div className="field">
                                     <label>Phone</label>
                                     <div className="ui input">
-                                        <input id="phone" type="text" placeholder="Phone"/></div>
+                                        <Field
+                                            id="phone"
+                                            name="phone"
+                                            type="text"
+                                            placeholder="Phone"
+                                        />
+
+                                        {errors.phone && touched.phone &&
+                                        (<div className="field-error">{errors.phone}</div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
-                            {/*<div className="field">*/}
-                            {/*    <div className="ui checkbox">*/}
-                            {/*        <input type="checkbox" className="hidden" readOnly="" tabIndex="0"/>*/}
-                            {/*        <label>I agree to the Terms and Conditions</label>*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
 
 
                             <Link to={'/successful'}>
-                                <button type="submit" className="ui button" disabled={submitting}
 
+                                <button type="submit" className="ui button" disabled={isSubmitting}
                                         onClick={() => {
                                             const personalData =
                                                 {
-                                                    name: document.getElementById("name").value,
-                                                    surname: document.getElementById("surname").value,
+                                                    name: document.getElementById("firstname").value,
+                                                    surname: document.getElementById("secondname").value,
                                                     email: document.getElementById("email").value,
                                                     phone: document.getElementById("phone").value
                                                 };
@@ -204,18 +216,13 @@ const Basket = ({
                                     Checkout
                                 </button>
                             </Link>
-                            <button className="ui button btn-reset" type="button"
-                                onClick={form.reset}
-                                disabled={submitting || pristine}
-                            >
-                                Reset
-                            </button>
 
-                        </form>
-                    )
-                    }
+                        </Form>
 
+                    )}
                 />
+
+
             </div>
             }
         </div>
@@ -237,44 +244,6 @@ const Basket = ({
         </div>
     )
 };
-
-// const Validation = () => {
-//     return (
-//         <Fragment>
-//             <ValidationForm
-//                 onSubmit={onSubmit}
-//                 validate={values => {
-//                     const errors = {};
-//                     if (!values.firstName) {
-//                         errors.firstName = 'Required'
-//                     }
-//                     if (!values.lastName) {
-//                         errors.lastName = 'Required'
-//                     }
-//                     if (!values.age) {
-//                         errors.age = 'Required'
-//                     } else if (isNaN(values.age)) {
-//                         errors.age = 'Must be a number'
-//                     } else if (values.age < 18) {
-//                         errors.age = 'No kids allowed'
-//                     }
-//                     return errors
-//                 }}
-//                 render={({ handleSubmit, reset, submitting, pristine, values }) => (
-//                     <form onSubmit={handleSubmit}>
-//                         <div>
-//                             <label>First Name</label>
-//                             <Field
-//                                 name="firstName"
-//                                 component="input"
-//                                 placeholder="First Name"
-//
-//                             />
-//                         </Fragment>
-//
-//                         )
-//                         };
-
 const mapStateToProps = state => {
     return {
         phones: getBasketPhonesWithCount(state),
